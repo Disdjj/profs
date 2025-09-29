@@ -171,3 +171,38 @@ body {
 .glow-cool {
   box-shadow: 0 0 20px rgba(85, 69, 96, 0.4);
 }
+
+/* 自定义滚动条样式 */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(186, 113, 35, 0.4) transparent;
+}
+
+/* Webkit浏览器（Chrome, Safari, Edge）滚动条样式 */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(186, 113, 35, 0.3);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: all 0.3s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(186, 113, 35, 0.6);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}

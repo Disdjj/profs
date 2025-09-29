@@ -25,7 +25,10 @@ const envSchema = z.object({
 
   // Google Gemini
   GOOGLE_API_KEY: z.string().optional(),
-  GOOGLE_API_BASE_URL: z.string().url().optional(),
+  GOOGLE_API_BASE_URL: z.preprocess(
+    (val) => (val === '' ? undefined : val),
+    z.string().url().optional(),
+  ),
   GOOGLE_MODEL: z.string().default('gemini-2.0-flash-001').optional(),
 
   // Anthropic Claude

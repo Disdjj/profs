@@ -17,11 +17,9 @@ import { MorphingText } from '@/components/ui/morphing-text'
 import {
   ChevronRight,
   Sparkles,
-  Zap,
-  Shield,
-  Palette,
-  Code,
   MessageCircle,
+  Users,
+  FileText,
 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
@@ -101,100 +99,41 @@ export default function HomePage() {
               transition={{ duration: 0.8 }}
             >
               <motion.div
-                className='inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-cool text-accent text-sm font-medium mb-6'
+                className='inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-primary text-primary-foreground text-sm font-medium mb-6'
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 <Sparkles className='w-4 h-4' />
-                AI MVP 应用模板
+                多专家讨论系统
               </motion.div>
 
               <h1 className='text-6xl md:text-7xl font-bold tracking-tight'>
-                <MorphingText texts={['Fast MVP', 'Fast Builder']} />
+                <MorphingText texts={['AI Experts']} />
               </h1>
 
               <p className='text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed'>
-                现代化全栈开发模板，集成最新技术栈，
+                提出一个话题，
                 <span className='text-primary font-semibold'>
-                  让你的想法快速变为现实
+                  AI专家团队深度讨论，自动生成专业白皮书
                 </span>
               </p>
-
-              <motion.div
-                className='flex flex-wrap justify-center gap-3 mt-8'
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                {[
-                  { name: 'Next.js 15', color: 'bg-gradient-dark text-accent' },
-                  {
-                    name: 'tRPC',
-                    color: 'bg-gradient-primary text-primary-foreground',
-                  },
-                  {
-                    name: 'Drizzle ORM',
-                    color: 'bg-gradient-secondary text-accent',
-                  },
-                  {
-                    name: 'Tailwind CSS',
-                    color: 'bg-gradient-accent text-accent-foreground',
-                  },
-                  {
-                    name: 'shadcn/ui',
-                    color: 'bg-gradient-warm text-background',
-                  },
-                  {
-                    name: 'TypeScript',
-                    color: 'bg-gradient-cool text-accent',
-                  },
-                ].map((tech, index) => (
-                  <motion.div
-                    key={tech.name}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                  >
-                    <Badge
-                      className={`${tech.color} px-3 py-1 text-sm font-medium`}
-                    >
-                      {tech.name}
-                    </Badge>
-                  </motion.div>
-                ))}
-              </motion.div>
             </motion.div>
 
             {/* CTA 按钮区域 */}
             <motion.div
-              className='flex flex-col sm:flex-row gap-4 justify-center items-center'
+              className='flex justify-center items-center'
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <Link href='/magic'>
-                <AnimatedButton />
-              </Link>
-
-              <Link href='/openai'>
+              <Link href='/experts'>
                 <Button
-                  className='h-12 px-6 text-base group bg-gradient-primary text-primary-foreground border-0 shadow-md hover:shadow-warm'
+                  className='h-16 px-12 text-xl group bg-gradient-primary text-primary-foreground border-0 shadow-warm hover:shadow-warm-lg'
                   size='lg'
                 >
-                  体验 OpenAI 聊天
-                  <MessageCircle className='ml-2 w-4 h-4 transition-transform group-hover:scale-110' />
-                </Button>
-              </Link>
-
-              <Link href='/trpc'>
-                <Button
-                  variant='outline'
-                  size='lg'
-                  className='h-12 px-6 text-base group'
-                >
-                  查看 tRPC 演示
-                  <ChevronRight className='ml-1 w-4 h-4 transition-transform group-hover:translate-x-1' />
+                  开始专家讨论
+                  <Users className='ml-3 w-6 h-6 transition-transform group-hover:scale-110' />
                 </Button>
               </Link>
             </motion.div>
@@ -203,7 +142,7 @@ export default function HomePage() {
 
         {/* Features Section */}
         <section className='py-20 px-6'>
-          <div className='max-w-6xl mx-auto'>
+          <div className='max-w-4xl mx-auto'>
             <motion.div
               className='text-center mb-16'
               initial={{ opacity: 0, y: 30 }}
@@ -212,92 +151,16 @@ export default function HomePage() {
               viewport={{ once: true }}
             >
               <h2 className='text-4xl md:text-5xl font-bold mb-6'>
-                <span className='text-gradient-warm'>强大的功能特性</span>
+                <span className='text-gradient-warm'>如何使用</span>
               </h2>
-              <p className='text-xl text-muted-foreground max-w-3xl mx-auto'>
-                集成最新的技术栈和最佳实践，让你专注于业务逻辑而非基础设施
+              <p className='text-xl text-muted-foreground max-w-2xl mx-auto'>
+                四步完成专业的多专家讨论与白皮书生成
               </p>
             </motion.div>
 
-            {/* 功能展示卡片 */}
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16'>
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <Card className='relative overflow-hidden hover:shadow-warm-xl transition-all duration-500 group border-0 bg-gradient-to-br from-card to-muted'>
-                  <div className='absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-20 transition-opacity duration-500' />
-                  <CardHeader className='relative z-10'>
-                    <CardTitle className='flex items-center gap-3 text-2xl'>
-                      <div className='p-2 rounded-lg bg-gradient-primary'>
-                        <Sparkles className='w-6 h-6 text-white' />
-                      </div>
-                      Magic UI 展示
-                    </CardTitle>
-                    <CardDescription className='text-base'>
-                      精美的 UI 动画效果和交互组件展示
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className='relative z-10'>
-                    <p className='text-muted-foreground mb-6 leading-relaxed'>
-                      体验各种动画特效、粒子效果和文字动画，为你的应用增添视觉魅力。
-                      包含流星雨、粒子系统、文字揭示等炫酷效果。
-                    </p>
-                    <Link href='/magic'>
-                      <Button className='w-full bg-gradient-primary hover:shadow-warm text-white border-0 h-12 text-base group'>
-                        探索 Magic UI
-                        <ChevronRight className='ml-2 w-4 h-4 transition-transform group-hover:translate-x-1' />
-                      </Button>
-                    </Link>
-                  </CardContent>
-                  <Meteors number={15} />
-                </Card>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <Card className='relative overflow-hidden hover:shadow-warm-xl transition-all duration-500 group border-0 bg-gradient-to-br from-muted to-card'>
-                  <div className='absolute inset-0 bg-gradient-secondary opacity-0 group-hover:opacity-20 transition-opacity duration-500' />
-                  <CardHeader className='relative z-10'>
-                    <CardTitle className='flex items-center gap-3 text-2xl'>
-                      <div className='p-2 rounded-lg bg-gradient-secondary'>
-                        <Zap className='w-6 h-6 text-white' />
-                      </div>
-                      tRPC 示例
-                    </CardTitle>
-                    <CardDescription className='text-base'>
-                      端到端类型安全的 API 调用演示
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className='relative z-10'>
-                    <p className='text-muted-foreground mb-6 leading-relaxed'>
-                      完整的 tRPC + Zod + Drizzle ORM
-                      示例，展示现代化全栈开发最佳实践。
-                      实现真正的端到端类型安全。
-                    </p>
-                    <Link href='/trpc'>
-                      <Button
-                        variant='outline'
-                        className='w-full border-2 border-primary/20 hover:bg-primary/5 h-12 text-base group'
-                      >
-                        查看 tRPC 演示
-                        <ChevronRight className='ml-2 w-4 h-4 transition-transform group-hover:translate-x-1' />
-                      </Button>
-                    </Link>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </div>
-
-            {/* 技术栈特性 */}
+            {/* 使用流程 */}
             <motion.div
-              className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-16'
+              className='space-y-6 mb-16'
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -305,212 +168,86 @@ export default function HomePage() {
             >
               {[
                 {
-                  icon: Code,
-                  title: '现代化框架',
-                  description:
-                    '基于 Next.js 15 App Router，支持 RSC 和 Server Actions',
-                  gradient: 'from-primary to-accent',
+                  step: '1',
+                  title: '输入讨论话题',
+                  description: '提出一个你想深入探讨的问题或主题',
+                  icon: MessageCircle,
                 },
                 {
-                  icon: Shield,
-                  title: '类型安全',
-                  description:
-                    'tRPC + Zod 实现端到端类型安全，一次定义全栈共享',
-                  gradient: 'from-secondary to-muted-foreground',
+                  step: '2',
+                  title: 'AI生成专家团队',
+                  description: '系统自动创建5位不同领域的专业AI专家',
+                  icon: Users,
                 },
                 {
-                  icon: Palette,
-                  title: '美观界面',
-                  description: 'shadcn/ui + Tailwind CSS 构建现代化用户界面',
-                  gradient: 'from-destructive to-accent',
+                  step: '3',
+                  title: '专家自由讨论',
+                  description: '点击专家头像让他们发言，流式输出实时观看',
+                  icon: Sparkles,
                 },
-              ].map((feature, index) => (
+                {
+                  step: '4',
+                  title: '生成专业白皮书',
+                  description: '一键总结讨论内容，生成结构化的Markdown白皮书',
+                  icon: FileText,
+                },
+              ].map((item, index) => (
                 <motion.div
-                  key={feature.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  key={item.step}
+                  className='flex items-start gap-6 p-6 rounded-xl bg-gradient-to-br from-card to-muted hover:shadow-warm transition-all duration-300'
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
                   viewport={{ once: true }}
                 >
-                  <Card className='text-center p-6 hover:shadow-warm transition-all duration-300 border-0 bg-gradient-to-br from-card to-secondary'>
-                    <div
-                      className={`inline-flex p-3 rounded-full bg-gradient-to-r ${feature.gradient} mb-4`}
-                    >
-                      <feature.icon className='w-6 h-6 text-white' />
+                  <div className='flex-shrink-0'>
+                    <div className='w-14 h-14 rounded-full bg-gradient-primary flex items-center justify-center'>
+                      <item.icon className='w-7 h-7 text-white' />
                     </div>
-                    <h3 className='text-xl font-semibold mb-3'>
-                      {feature.title}
-                    </h3>
+                  </div>
+                  <div className='flex-1'>
+                    <div className='flex items-center gap-3 mb-2'>
+                      <Badge className='bg-gradient-primary text-primary-foreground px-2 py-0.5 text-sm font-bold'>
+                        步骤 {item.step}
+                      </Badge>
+                      <h3 className='text-xl font-semibold'>{item.title}</h3>
+                    </div>
                     <p className='text-muted-foreground leading-relaxed'>
-                      {feature.description}
+                      {item.description}
                     </p>
-                  </Card>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
-          </div>
-        </section>
 
-        {/* Interactive Demo Section */}
-        <section className='py-20 px-6 bg-gradient-to-br from-muted to-secondary'>
-          <div className='max-w-4xl mx-auto'>
+            {/* CTA */}
             <motion.div
-              className='text-center mb-12'
+              className='text-center'
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className='text-4xl font-bold mb-6'>
-                <span className='text-gradient-primary'>交互式演示</span>
-              </h2>
-              <p className='text-xl text-muted-foreground'>
-                体验 MagicUI 的强大动画效果
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <TextRevealDemo />
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Quick Start Section */}
-        <section className='py-20 px-6'>
-          <div className='max-w-4xl mx-auto'>
-            <motion.div
-              className='text-center mb-12'
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h2 className='text-4xl font-bold mb-6'>
-                <span className='text-gradient-accent'>快速开始</span>
-              </h2>
-              <p className='text-xl text-muted-foreground'>
-                三步即可启动你的项目
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <Card className='relative overflow-hidden bg-gradient-dark text-foreground border-0'>
-                <CardContent className='p-8'>
-                  <div className='space-y-6'>
-                    {[
-                      {
-                        step: '1',
-                        command: 'pnpm install',
-                        description: '安装项目依赖',
-                      },
-                      {
-                        step: '2',
-                        command: 'pnpm db:push',
-                        description: '初始化数据库',
-                      },
-                      {
-                        step: '3',
-                        command: 'pnpm dev',
-                        description: '启动开发服务器',
-                      },
-                    ].map((item, index) => (
-                      <motion.div
-                        key={item.step}
-                        className='flex items-center gap-4 p-4 rounded-lg bg-card/20 backdrop-blur-sm'
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6, delay: index * 0.2 }}
-                        viewport={{ once: true }}
-                      >
-                        <Badge className='bg-gradient-primary text-primary-foreground px-3 py-1 text-lg font-bold'>
-                          {item.step}
-                        </Badge>
-                        <code className='flex-1 bg-background/50 px-4 py-2 rounded font-mono text-accent'>
-                          {item.command}
-                        </code>
-                        <span className='text-muted-foreground text-sm'>
-                          {item.description}
-                        </span>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  <motion.div
-                    className='mt-8 text-center'
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                    viewport={{ once: true }}
-                  >
-                    <p className='text-muted-foreground mb-4'>
-                      然后访问{' '}
-                      <code className='bg-card/20 px-2 py-1 rounded text-accent'>
-                        http://localhost:3000
-                      </code>
-                    </p>
-                    <div className='flex justify-center gap-4'>
-                      <Link href='/magic'>
-                        <Button className='bg-gradient-primary hover:shadow-warm text-primary-foreground border-0'>
-                          开始探索
-                        </Button>
-                      </Link>
-                      <Link href='/trpc'>
-                        <Button
-                          variant='outline'
-                          className='border-border text-foreground hover:bg-card/20'
-                        >
-                          查看示例
-                        </Button>
-                      </Link>
-                    </div>
-                  </motion.div>
-                </CardContent>
-                <RetroGrid />
-              </Card>
+              <Link href='/experts'>
+                <Button
+                  size='lg'
+                  className='h-16 px-12 text-xl bg-gradient-primary hover:shadow-warm-lg text-white border-0'
+                >
+                  <Users className='mr-3 w-6 h-6' />
+                  立即开始讨论
+                  <ChevronRight className='ml-3 w-6 h-6' />
+                </Button>
+              </Link>
             </motion.div>
           </div>
         </section>
 
         {/* Footer */}
-        <footer className='py-12 px-6 bg-gradient-dark text-foreground'>
+        <footer className='py-8 px-6 bg-gradient-dark text-foreground'>
           <div className='max-w-4xl mx-auto text-center'>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h3 className='text-2xl font-bold mb-4'>
-                <span className='text-gradient-accent'>Fast MVP</span>
-              </h3>
-              <p className='text-muted-foreground mb-6'>
-                现代化全栈开发模板，让你的想法快速变为现实
-              </p>
-              <div className='flex justify-center gap-4'>
-                <Badge
-                  variant='outline'
-                  className='border-border text-muted-foreground'
-                >
-                  MIT License
-                </Badge>
-                <Badge
-                  variant='outline'
-                  className='border-border text-muted-foreground'
-                >
-                  Open Source
-                </Badge>
-              </div>
-            </motion.div>
+            <p className='text-sm text-muted-foreground'>
+              多专家讨论系统 - AI驱动的深度分析与白皮书生成
+            </p>
           </div>
         </footer>
       </main>

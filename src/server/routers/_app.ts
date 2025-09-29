@@ -1,6 +1,7 @@
 import { router } from '../trpc'
 import { helloRouter } from './hello'
 import { chatRouter } from './chat'
+import { expertRouter } from './expert'
 
 /**
  * 这是tRPC的主路由
@@ -9,6 +10,7 @@ import { chatRouter } from './chat'
 export const appRouter = router({
   hello: helloRouter,
   chat: chatRouter,
+  expert: expertRouter,
 })
 
 // 导出路由类型，供客户端使用
