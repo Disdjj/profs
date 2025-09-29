@@ -1,0 +1,173 @@
+@import 'tailwindcss';
+
+:root {
+  /* 基于深色调渐变的统一主题配色 */
+  --background: #001014;
+  --foreground: #f0f0f0;
+  --card: #2c0f1e;
+  --card-foreground: #f0f0f0;
+  --popover: #2c0f1e;
+  --popover-foreground: #f0f0f0;
+  --primary: #ba7123;
+  --primary-foreground: #001014;
+  --secondary: #554560;
+  --secondary-foreground: #a89e4b;
+  --muted: #230000;
+  --muted-foreground: #c56b77;
+  --accent: #f0f0f0;
+  --accent-foreground: #001014;
+  --destructive: #c56b77;
+  --destructive-foreground: #f0f0f0;
+  --border: #63384f;
+  --input: #63384f;
+  --ring: #ba7123;
+  --radius: 0.5rem;
+
+  /* 自定义渐变色变量 */
+  --gradient-primary: linear-gradient(135deg, #ba7123 0%, #523737 100%);
+  --gradient-secondary: linear-gradient(135deg, #554560 0%, #a89e4b 100%);
+  --gradient-accent: linear-gradient(135deg, #c56b77 0%, #a64b4b 100%);
+  --gradient-warm: linear-gradient(
+    135deg,
+    #ba7123 0%,
+    #a89e4b 50%,
+    #f0f0f0 100%
+  );
+  --gradient-dark: linear-gradient(
+    135deg,
+    #001014 0%,
+    #2c0f1e 50%,
+    #230000 100%
+  );
+  --gradient-cool: linear-gradient(
+    135deg,
+    #554560 0%,
+    #63384f 50%,
+    #c56b77 100%
+  );
+  --gradient-earth: linear-gradient(
+    135deg,
+    #54573d 0%,
+    #ba7123 50%,
+    #a89e4b 100%
+  );
+}
+
+/* 移除暗色主题，统一使用温暖色调 */
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* 自定义渐变工具类 */
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-secondary {
+  background: var(--gradient-secondary);
+}
+
+.bg-gradient-accent {
+  background: var(--gradient-accent);
+}
+
+.bg-gradient-warm {
+  background: var(--gradient-warm);
+}
+
+.bg-gradient-dark {
+  background: var(--gradient-dark);
+}
+
+.bg-gradient-cool {
+  background: var(--gradient-cool);
+}
+
+.bg-gradient-earth {
+  background: var(--gradient-earth);
+}
+
+/* 文字渐变工具类 */
+.text-gradient-primary {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-secondary {
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-accent {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-warm {
+  background: var(--gradient-warm);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-cool {
+  background: var(--gradient-cool);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-earth {
+  background: var(--gradient-earth);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 深色调的阴影效果 */
+.shadow-warm {
+  box-shadow:
+    0 4px 6px -1px rgba(186, 113, 35, 0.2),
+    0 2px 4px -1px rgba(186, 113, 35, 0.1);
+}
+
+.shadow-warm-lg {
+  box-shadow:
+    0 10px 15px -3px rgba(186, 113, 35, 0.2),
+    0 4px 6px -2px rgba(186, 113, 35, 0.1);
+}
+
+.shadow-warm-xl {
+  box-shadow:
+    0 20px 25px -5px rgba(186, 113, 35, 0.2),
+    0 10px 10px -5px rgba(186, 113, 35, 0.08);
+}
+
+/* 发光效果 */
+.glow-warm {
+  box-shadow: 0 0 20px rgba(222, 193, 109, 0.4);
+}
+
+.glow-primary {
+  box-shadow: 0 0 20px rgba(186, 113, 35, 0.5);
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px rgba(197, 107, 119, 0.4);
+}
+
+.glow-cool {
+  box-shadow: 0 0 20px rgba(85, 69, 96, 0.4);
+}
