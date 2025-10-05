@@ -8,7 +8,7 @@ export const expertConfigSchema = z.object({
   systemPrompt: z.string().min(1, '系统提示不能为空'),
   provider: z.enum(['openai', 'claude', 'gemini']).default('openai'),
   model: z.string().optional(),
-  temperature: z.number().min(0).max(2).default(0.7),
+  temperature: z.number().min(0.3).max(1.0).default(0.7),
 })
 
 export type ExpertConfig = z.infer<typeof expertConfigSchema>
@@ -30,6 +30,12 @@ export const expertDiscussionSchema = {
     topic: z.string().min(1, '话题不能为空'),
     count: z.number().min(2).max(10).default(5),
     provider: z.enum(['openai', 'claude', 'gemini']).default('openai'),
+    customRequirements: z
+      .string()
+      .optional()
+      .describe(
+        '用户自定义的专家要求，例如：需要一位电商行业的产品经理、要有创业公司背景的工程师等',
+      ),
   }),
 
   // 专家发言

@@ -83,6 +83,7 @@ pnpm start
 ### 2. AI 生成专家团队
 
 系统自动创建 5 位不同领域的专业 AI 专家，每位专家都有：
+
 - 独特的角色定位
 - 专业的系统提示词
 - 推荐的 AI 模型配置
@@ -96,6 +97,7 @@ pnpm start
 ### 4. 生成专业白皮书
 
 讨论结束后，点击"生成白皮书"按钮：
+
 - 自动总结讨论内容
 - 生成结构化的 Markdown 文档
 - 支持实时预览渲染
@@ -156,7 +158,7 @@ pnpm db:studio        # 打开 Drizzle Studio
 ```typescript
 // 根据话题自动生成 5 位专家
 const result = await trpc.expert.generateExperts.mutate({
-  topic: '量子计算的未来发展'
+  topic: '量子计算的未来发展',
 })
 ```
 
@@ -169,8 +171,8 @@ const response = await fetch('/api/expert/stream', {
   body: JSON.stringify({
     expertConfig,
     discussionHistory,
-    currentTopic
-  })
+    currentTopic,
+  }),
 })
 ```
 
@@ -180,7 +182,7 @@ const response = await fetch('/api/expert/stream', {
 // 将讨论总结为 Markdown 白皮书
 const whitepaper = await trpc.expert.generateWhitepaper.mutate({
   messages: discussionHistory,
-  topic: currentTopic
+  topic: currentTopic,
 })
 ```
 

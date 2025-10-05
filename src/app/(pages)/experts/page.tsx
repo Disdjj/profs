@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription } from '@/components/ui/alert'
@@ -55,6 +56,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 export default function ExpertsPage() {
   const [topic, setTopic] = useState('')
+  const [customRequirements, setCustomRequirements] = useState('')
   const [experts, setExperts] = useState<ExpertConfig[]>([])
   const [messages, setMessages] = useState<Message[]>([])
   const [whitepaper, setWhitepaper] = useState('')
@@ -99,15 +101,16 @@ export default function ExpertsPage() {
   //   },
   // })
 
-  const generateWhitepaperMutation =
-    trpc.expert.generateWhitepaper.useMutation({
+  const generateWhitepaperMutation = trpc.expert.generateWhitepaper.useMutation(
+    {
       onSuccess: (data) => {
         if (data.success) {
           setWhitepaper(data.whitepaper)
           setActiveTab('whitepaper')
         }
       },
-    })
+    },
+  )
 
   const handleGenerateExperts = () => {
     if (!topic.trim()) return
@@ -115,6 +118,7 @@ export default function ExpertsPage() {
       topic: topic.trim(),
       count: 5,
       provider: 'openai',
+      customRequirements: customRequirements.trim() || undefined,
     })
   }
 
@@ -203,7 +207,11 @@ export default function ExpertsPage() {
 
     const updatedExperts = experts.map((exp) =>
       exp.name === editingExpert.name
-        ? { ...exp, model: editModel || undefined, temperature: editTemperature }
+        ? {
+            ...exp,
+            model: editModel || undefined,
+            temperature: editTemperature,
+          }
         : exp,
     )
     setExperts(updatedExperts)
@@ -297,6 +305,21 @@ export default function ExpertsPage() {
                   />
                 </div>
 
+                <div>
+                  <label className='text-sm font-medium mb-1.5 block text-muted-foreground'>
+                    专家要求（可选）
+                  </label>
+                  <Textarea
+                    placeholder='例如：需要一位电商行业的产品经理、要有创业公司背景的工程师、包含一位数据分析师'
+                    value={customRequirements}
+                    onChange={(e) => setCustomRequirements(e.target.value)}
+                    className='resize-none h-20 text-sm'
+                  />
+                  <p className='text-xs text-muted-foreground mt-1'>
+                    可以指定想要的专家类型、背景或特长
+                  </p>
+                </div>
+
                 <Button
                   onClick={handleGenerateExperts}
                   disabled={!topic.trim() || generateExpertsMutation.isPending}
@@ -335,15 +358,14 @@ export default function ExpertsPage() {
                       setMessages([])
                       setWhitepaper('')
                       setActiveTab('discussion')
+                      setCustomRequirements('')
                     }}
                     className='h-7 px-2 text-xs'
                   >
                     重置
                   </Button>
                 </div>
-                <p className='text-xs text-muted-foreground'>
-                  话题：{topic}
-                </p>
+                <p className='text-xs text-muted-foreground'>话题：{topic}</p>
               </div>
             )}
           </div>
@@ -380,7 +402,10 @@ export default function ExpertsPage() {
 
                           <div className='flex items-start gap-3'>
                             <Avatar className='w-12 h-12 flex-shrink-0 ring-2 ring-primary/20 group-hover:ring-primary transition-all'>
-                              <AvatarImage src={expert.avatar} alt={expert.name} />
+                              <AvatarImage
+                                src={expert.avatar}
+                                alt={expert.name}
+                              />
                               <AvatarFallback className='text-xs'>
                                 {expert.name.slice(0, 2)}
                               </AvatarFallback>
@@ -404,7 +429,10 @@ export default function ExpertsPage() {
                                 {expert.role}
                               </p>
                               {expert.model && (
-                                <Badge variant='outline' className='text-xs px-1.5 py-0'>
+                                <Badge
+                                  variant='outline'
+                                  className='text-xs px-1.5 py-0'
+                                >
                                   {expert.model}
                                 </Badge>
                               )}
@@ -568,11 +596,13 @@ export default function ExpertsPage() {
                                       </Badge>
                                     )}
                                   </div>
-                                  <article className='prose prose-sm prose-invert max-w-none
+                                  <article
+                                    className='prose prose-sm prose-invert max-w-none
                                     prose-p:text-foreground prose-p:my-2
                                     prose-strong:text-primary prose-strong:font-semibold
                                     prose-ul:my-2 prose-li:my-1
-                                    prose-code:text-accent prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:before:content-none prose-code:after:content-none'>
+                                    prose-code:text-accent prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:before:content-none prose-code:after:content-none'
+                                  >
                                     <ReactMarkdown>
                                       {message.content}
                                     </ReactMarkdown>
@@ -616,11 +646,13 @@ export default function ExpertsPage() {
                                     生成中
                                   </Badge>
                                 </div>
-                                <article className='prose prose-sm prose-invert max-w-none
+                                <article
+                                  className='prose prose-sm prose-invert max-w-none
                                   prose-p:text-foreground prose-p:my-2
                                   prose-strong:text-primary prose-strong:font-semibold
                                   prose-ul:my-2 prose-li:my-1
-                                  prose-code:text-accent prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:before:content-none prose-code:after:content-none'>
+                                  prose-code:text-accent prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:before:content-none prose-code:after:content-none'
+                                >
                                   <ReactMarkdown>
                                     {streamingMessage.content}
                                   </ReactMarkdown>
@@ -682,7 +714,8 @@ export default function ExpertsPage() {
 
                           {/* 白皮书内容 */}
                           <div className='p-8 rounded-xl bg-gradient-to-br from-card to-background border border-border shadow-lg'>
-                            <article className='prose prose-lg prose-invert max-w-none
+                            <article
+                              className='prose prose-lg prose-invert max-w-none
                               prose-headings:font-bold
                               prose-h1:text-5xl prose-h1:mb-8 prose-h1:text-primary
                               prose-h2:text-3xl prose-h2:mt-10 prose-h2:mb-6 prose-h2:text-primary/90
@@ -691,7 +724,8 @@ export default function ExpertsPage() {
                               prose-strong:text-primary prose-strong:font-semibold
                               prose-ul:my-6 prose-li:my-2 prose-li:text-foreground
                               prose-code:text-accent prose-code:bg-muted prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
-                              prose-a:text-primary prose-a:no-underline hover:prose-a:underline'>
+                              prose-a:text-primary prose-a:no-underline hover:prose-a:underline'
+                            >
                               <ReactMarkdown>{whitepaper}</ReactMarkdown>
                             </article>
                           </div>
@@ -732,7 +766,10 @@ export default function ExpertsPage() {
       </div>
 
       {/* Edit Expert Dialog */}
-      <Dialog open={!!editingExpert} onOpenChange={() => setEditingExpert(null)}>
+      <Dialog
+        open={!!editingExpert}
+        onOpenChange={() => setEditingExpert(null)}
+      >
         <DialogContent className='sm:max-w-[425px]'>
           <DialogHeader>
             <DialogTitle className='flex items-center gap-2'>
@@ -770,37 +807,37 @@ export default function ExpertsPage() {
                 value={editModel}
                 onChange={(e) => setEditModel(e.target.value)}
               />
-              <p className='text-xs text-muted-foreground'>
-                留空使用默认模型
-              </p>
+              <p className='text-xs text-muted-foreground'>留空使用默认模型</p>
             </div>
             <div className='grid gap-2'>
-              <Label htmlFor='temperature'>Temperature: {editTemperature}</Label>
+              <Label htmlFor='temperature'>
+                Temperature: {editTemperature}
+              </Label>
               <input
                 id='temperature'
                 type='range'
-                min='0'
-                max='2'
+                min='0.3'
+                max='1.0'
                 step='0.1'
                 value={editTemperature}
                 onChange={(e) => setEditTemperature(parseFloat(e.target.value))}
                 className='w-full'
               />
               <div className='flex justify-between text-xs text-muted-foreground'>
-                <span>精确 (0)</span>
-                <span>平衡 (1)</span>
-                <span>创造 (2)</span>
+                <span>精确 (0.3)</span>
+                <span>平衡 (0.7)</span>
+                <span>创造 (1.0)</span>
               </div>
             </div>
           </div>
           <DialogFooter>
-            <Button
-              variant='outline'
-              onClick={() => setEditingExpert(null)}
-            >
+            <Button variant='outline' onClick={() => setEditingExpert(null)}>
               取消
             </Button>
-            <Button onClick={handleSaveExpertConfig} className='bg-gradient-primary'>
+            <Button
+              onClick={handleSaveExpertConfig}
+              className='bg-gradient-primary'
+            >
               保存
             </Button>
           </DialogFooter>
