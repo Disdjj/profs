@@ -8,7 +8,7 @@ jobs:
   review:
     runs-on: ubuntu-latest
     env:
-      ANTHROPIC_BASE_URL: "https://co.yes.vg"
+      ANTHROPIC_BASE_URL: 'https://co.yes.vg'
     permissions:
       contents: read
       pull-requests: write
@@ -24,7 +24,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          anthropic_base_url: ${{ env.ANTHROPIC_BASE_URL }}
 
           prompt: '/review-pr REPO: ${{ github.repository }} PR_NUMBER: ${{ github.event.pull_request.number }} and comment in 简体中文'
           claude_args: |
