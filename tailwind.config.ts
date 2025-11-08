@@ -49,11 +49,47 @@ const config: Config = {
           DEFAULT: 'var(--card)',
           foreground: 'var(--card-foreground)',
         },
+        // Neo-Brutalism 颜色扩展
+        brutal: {
+          base: 'var(--bg-base)',
+          panel: 'var(--bg-panel)',
+          white: 'var(--bg-white)',
+          secondary: 'var(--bg-secondary)',
+          pink: 'var(--color-pink)',
+          yellow: 'var(--color-yellow)',
+          blue: 'var(--color-blue)',
+          green: 'var(--color-green)',
+          text: {
+            primary: 'var(--text-primary)',
+            secondary: 'var(--text-secondary)',
+          },
+          border: {
+            primary: 'var(--border-primary)',
+            light: 'var(--border-light)',
+          },
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+        // Neo-Brutalism 圆角
+        'brutal-xl': '20px',
+        'brutal-lg': '16px',
+        'brutal-md': '12px',
+        'brutal-sm': '10px',
+        'brutal-xs': '8px',
+      },
+      boxShadow: {
+        // Neo-Brutalism 硬阴影
+        'brutal-sm': '2px 2px 0 rgba(0, 0, 0, 0.15)',
+        brutal: '4px 4px 0 rgba(0, 0, 0, 0.15)',
+        'brutal-lg': '6px 6px 0 rgba(0, 0, 0, 0.15)',
+      },
+      borderWidth: {
+        // Neo-Brutalism 边框宽度
+        brutal: '3px',
+        'brutal-2': '2px',
       },
       keyframes: {
         'accordion-down': {
