@@ -1,59 +1,49 @@
 @import 'tailwindcss';
 
 :root {
-  /* 基于深色调渐变的统一主题配色 */
-  --background: #001014;
-  --foreground: #f0f0f0;
-  --card: #2c0f1e;
-  --card-foreground: #f0f0f0;
-  --popover: #2c0f1e;
-  --popover-foreground: #f0f0f0;
-  --primary: #ba7123;
-  --primary-foreground: #001014;
-  --secondary: #554560;
-  --secondary-foreground: #a89e4b;
-  --muted: #230000;
-  --muted-foreground: #c56b77;
-  --accent: #f0f0f0;
-  --accent-foreground: #001014;
-  --destructive: #c56b77;
-  --destructive-foreground: #f0f0f0;
-  --border: #63384f;
-  --input: #63384f;
-  --ring: #ba7123;
-  --radius: 0.5rem;
+  /* Neo-Brutalism 设计系统颜色 */
+  /* 背景色 */
+  --bg-base: #f5f5f3;
+  --bg-panel: #fafaf8;
+  --bg-white: #ffffff;
+  --bg-secondary: #f0f0ee;
 
-  /* 自定义渐变色变量 */
-  --gradient-primary: linear-gradient(135deg, #ba7123 0%, #523737 100%);
-  --gradient-secondary: linear-gradient(135deg, #554560 0%, #a89e4b 100%);
-  --gradient-accent: linear-gradient(135deg, #c56b77 0%, #a64b4b 100%);
-  --gradient-warm: linear-gradient(
-    135deg,
-    #ba7123 0%,
-    #a89e4b 50%,
-    #f0f0f0 100%
-  );
-  --gradient-dark: linear-gradient(
-    135deg,
-    #001014 0%,
-    #2c0f1e 50%,
-    #230000 100%
-  );
-  --gradient-cool: linear-gradient(
-    135deg,
-    #554560 0%,
-    #63384f 50%,
-    #c56b77 100%
-  );
-  --gradient-earth: linear-gradient(
-    135deg,
-    #54573d 0%,
-    #ba7123 50%,
-    #a89e4b 100%
-  );
+  /* 文字颜色 */
+  --text-primary: #000000;
+  --text-secondary: #666666;
+
+  /* 重点色 */
+  --color-pink: #ff7aa3;
+  --color-yellow: #ffd966;
+  --color-blue: #6ba4ff;
+  --color-green: #5fe0a8;
+
+  /* 边框颜色 */
+  --border-primary: #000000;
+  --border-light: #e0e0e0;
+
+  /* Shadcn/UI 兼容性映射 */
+  --background: #f5f5f3;
+  --foreground: #000000;
+  --card: #fafaf8;
+  --card-foreground: #000000;
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+  --primary: #ffd966;
+  --primary-foreground: #000000;
+  --secondary: #f0f0ee;
+  --secondary-foreground: #000000;
+  --muted: #f0f0ee;
+  --muted-foreground: #666666;
+  --accent: #6ba4ff;
+  --accent-foreground: #000000;
+  --destructive: #ff7aa3;
+  --destructive-foreground: #000000;
+  --border: #000000;
+  --input: #000000;
+  --ring: #000000;
+  --radius: 0.75rem;
 }
-
-/* 移除暗色主题，统一使用温暖色调 */
 
 * {
   border-color: var(--border);
@@ -62,126 +52,132 @@
 body {
   background-color: var(--background);
   color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica',
+    'Arial', sans-serif;
 }
 
-/* 自定义渐变工具类 */
-.bg-gradient-primary {
-  background: var(--gradient-primary);
+/* Neo-Brutalism 硬阴影系统 */
+.shadow-brutal-sm {
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
 }
 
-.bg-gradient-secondary {
-  background: var(--gradient-secondary);
+.shadow-brutal {
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.15);
 }
 
-.bg-gradient-accent {
-  background: var(--gradient-accent);
+.shadow-brutal-lg {
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.15);
 }
 
-.bg-gradient-warm {
-  background: var(--gradient-warm);
+/* Hover 按压效果 */
+.hover-press {
+  transition: all 0.1s ease;
 }
 
-.bg-gradient-dark {
-  background: var(--gradient-dark);
+.hover-press:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
 }
 
-.bg-gradient-cool {
-  background: var(--gradient-cool);
+/* 边框样式类 */
+.border-brutal {
+  border: 3px solid var(--border-primary);
 }
 
-.bg-gradient-earth {
-  background: var(--gradient-earth);
+.border-brutal-2 {
+  border: 2px solid var(--border-primary);
 }
 
-/* 文字渐变工具类 */
-.text-gradient-primary {
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.border-brutal-light {
+  border: 1px solid var(--border-light);
 }
 
-.text-gradient-secondary {
-  background: var(--gradient-secondary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* 圆角系统 */
+.rounded-brutal-xl {
+  border-radius: 20px;
 }
 
-.text-gradient-accent {
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.rounded-brutal-lg {
+  border-radius: 16px;
 }
 
-.text-gradient-warm {
-  background: var(--gradient-warm);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.rounded-brutal-md {
+  border-radius: 12px;
 }
 
-.text-gradient-cool {
-  background: var(--gradient-cool);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.rounded-brutal-sm {
+  border-radius: 10px;
 }
 
-.text-gradient-earth {
-  background: var(--gradient-earth);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.rounded-brutal-xs {
+  border-radius: 8px;
 }
 
-/* 深色调的阴影效果 */
-.shadow-warm {
-  box-shadow:
-    0 4px 6px -1px rgba(186, 113, 35, 0.2),
-    0 2px 4px -1px rgba(186, 113, 35, 0.1);
+/* 背景色工具类 */
+.bg-brutal-base {
+  background-color: var(--bg-base);
 }
 
-.shadow-warm-lg {
-  box-shadow:
-    0 10px 15px -3px rgba(186, 113, 35, 0.2),
-    0 4px 6px -2px rgba(186, 113, 35, 0.1);
+.bg-brutal-panel {
+  background-color: var(--bg-panel);
 }
 
-.shadow-warm-xl {
-  box-shadow:
-    0 20px 25px -5px rgba(186, 113, 35, 0.2),
-    0 10px 10px -5px rgba(186, 113, 35, 0.08);
+.bg-brutal-white {
+  background-color: var(--bg-white);
 }
 
-/* 发光效果 */
-.glow-warm {
-  box-shadow: 0 0 20px rgba(222, 193, 109, 0.4);
+.bg-brutal-secondary {
+  background-color: var(--bg-secondary);
 }
 
-.glow-primary {
-  box-shadow: 0 0 20px rgba(186, 113, 35, 0.5);
+/* 重点色背景 */
+.bg-brutal-pink {
+  background-color: var(--color-pink);
 }
 
-.glow-accent {
-  box-shadow: 0 0 20px rgba(197, 107, 119, 0.4);
+.bg-brutal-yellow {
+  background-color: var(--color-yellow);
 }
 
-.glow-cool {
-  box-shadow: 0 0 20px rgba(85, 69, 96, 0.4);
+.bg-brutal-blue {
+  background-color: var(--color-blue);
 }
 
-/* 自定义滚动条样式 */
+.bg-brutal-green {
+  background-color: var(--color-green);
+}
+
+/* 文字颜色工具类 */
+.text-brutal-primary {
+  color: var(--text-primary);
+}
+
+.text-brutal-secondary {
+  color: var(--text-secondary);
+}
+
+/* 字体粗细 */
+.font-brutal-bold {
+  font-weight: 700;
+}
+
+.font-brutal-semibold {
+  font-weight: 600;
+}
+
+.font-brutal-normal {
+  font-weight: 400;
+}
+
+/* 自定义滚动条样式（Neo-Brutalism 风格）*/
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(186, 113, 35, 0.4) transparent;
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
 }
 
-/* Webkit浏览器（Chrome, Safari, Edge）滚动条样式 */
 *::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
 }
 
 *::-webkit-scrollbar-track {
@@ -189,20 +185,52 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-  background: rgba(186, 113, 35, 0.3);
-  border-radius: 10px;
-  border: 2px solid transparent;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0;
+  border: 3px solid transparent;
   background-clip: padding-box;
-  transition: all 0.3s ease;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background: rgba(186, 113, 35, 0.6);
-  border-radius: 10px;
-  border: 2px solid transparent;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 0;
+  border: 3px solid transparent;
   background-clip: padding-box;
 }
 
 *::-webkit-scrollbar-corner {
   background: transparent;
 }
+
+/* 表格特殊样式 */
+.table-brutal thead {
+  background-color: var(--bg-secondary);
+  border-bottom: 2px solid var(--border-primary);
+}
+
+.table-brutal tbody tr {
+  border-bottom: 1px solid var(--border-light);
+}
+
+.table-brutal tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* Toggle 开关样式 */
+.toggle-brutal {
+  border: 3px solid var(--border-primary);
+  border-radius: 100px;
+  background-color: #999999;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-brutal.active {
+  background-color: var(--color-green);
+}
+
+.toggle-brutal .knob {
+  background-color: var(--text-primary);
+  border-radius: 100%;
+}
+
+/* 移除旧的渐变和阴影效果 */
